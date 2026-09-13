@@ -1,0 +1,29 @@
+# Python артефакти
+__pycache__/
+*.pyc
+*.pyo
+
+# Тестові кеші
+.pytest_cache/
+.coverage
+
+# Віртуальні середовища
+.venv/
+env/
+
+# Збірка
+build/
+dist/
+*.egg-info/
+
+# Git
+.git/
+.gitignore
+
+# IDE
+.vscode/
+.idea/
+
+# Docker
+Dockerfile
+docker-compose.yml
