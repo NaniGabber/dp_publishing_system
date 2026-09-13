@@ -22,6 +22,7 @@ class Publication(models.Model):
     def __str__(self):
         return f"{self.title} ({self.status})"
 
+
 class PublicationReviewer(models.Model):
     publication = models.ForeignKey(Publication, on_delete=models.CASCADE, related_name="reviewers")
     reviewer = models.ForeignKey("Reviewer", on_delete=models.CASCADE)
