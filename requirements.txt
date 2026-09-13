@@ -2,3 +2,4 @@ django==5.2.17
 psycopg[binary,pool]==3.3.5
 djangorestframework==3.18.1
 python-decouple==3.8
+csp==0.18.0

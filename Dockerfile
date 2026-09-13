@@ -2,7 +2,7 @@ FROM python:3.11-alpine
 
 WORKDIR /app
 
-RUN apk add --no-cache gcc musl-dev libffi-dev musl-locales tzdata
+RUN apk add --no-cache gcc musl-dev libffi-dev musl-locales tzdata git
 
 ENV LANG=en_US.UTF-8
 ENV LC_ALL=en_US.UTF-8

@@ -12,8 +12,25 @@ https://docs.djangoproject.com/en/6.1/ref/settings/
 
 from pathlib import Path
 from decouple import config
+from csp.constants import SELF, NONCE
 
 import os
+
+CSRF_FAILURE_VIEW = "django.views.csrf.csrf_failure"
+CSRF_COOKIE_SECURE = True
+
+
+CSP_DIRECTIVES = {
+    "default-src": ["'self'"],
+    "script-src": ["'self'", "'nonce'", "https://cdnjs.cloudflare.com"],
+    "style-src": ["'self'", "https://cdnjs.cloudflare.com"],
+    "font-src": ["'self'", "https://cdnjs.cloudflare.com"],
+    "img-src": ["'self'"],
+    "connect-src": ["'self'"],
+}
+
+
+CSP_NONCE_IN = ["script-src"]
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -41,7 +58,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'publication_system',
+    'accounts'
 ]
 
 MIDDLEWARE = [
