@@ -6,7 +6,7 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - .:/publishing_system
+      - .:/app
       - ./staticfiles:/app/staticfiles
     depends_on:
       - db
