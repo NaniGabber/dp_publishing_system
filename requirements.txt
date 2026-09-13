@@ -1,0 +1,6 @@
+django==5.0.6
+
+# PostgreSQL драйвер
+psycopg[binary,pool]==3.3.5
+
+djangorestframework==3.15.2
