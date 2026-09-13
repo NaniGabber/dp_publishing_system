@@ -25,3 +25,27 @@ class Profile(models.Model):
 
     def __str__(self):
         return f"{self.user.username} Profile"
+
+class Author(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    orcid = models.CharField(max_length=50, blank=True, null=True)
+    affiliation = models.CharField(max_length=200, blank=True, null=True)
+
+    def __str__(self):
+        return f"Author: {self.user.username}"
+
+
+class Reviewer(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    expertise = models.TextField(blank=True, null=True)
+
+    def __str__(self):
+        return f"Reviewer: {self.user.username}"
+
+
+class Editor(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    position = models.CharField(max_length=100, blank=True, null=True)
+
+    def __str__(self):
+        return f"Editor: {self.user.username}"
