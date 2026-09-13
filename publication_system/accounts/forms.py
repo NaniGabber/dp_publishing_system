@@ -1,0 +1,29 @@
+from django import forms
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
+from ...accounts.models import Profile
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    bio = models.TextField(blank=True)
+    avatar = models.ImageField(upload_to="avatars/", default="avatars/default.png")
+    birth_date = models.DateField(null=True, blank=True)
+    gender = models.CharField(
+        max_length=10,
+        choices=[
+            ("M", "Male"),
+            ("F", "Female"),
+            ("N", "Non-binary"),
+            ("O", "Other"),
+        ],
+        blank=True,
+        null=True,  
+    )
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True) 
+    is_verified = models.BooleanField(default=False)
+    email_notifications = models.BooleanField(default=True)
+    location = models.CharField(max_length=100, blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.user.username} Profile"
