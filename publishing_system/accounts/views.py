@@ -8,7 +8,7 @@ from django.contrib.auth.tokens import default_token_generator
 from django.template.loader import render_to_string
 from django.core.mail import send_mail
 from django.contrib.sites.shortcuts import get_current_site
-from publication_system import settings
+from publishing_system import settings
 from .forms import UserRegistrationForm, UserUpdateForm, ProfileUpdateForm
 
 

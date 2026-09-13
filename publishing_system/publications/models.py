@@ -1,10 +1,11 @@
 from django.db import models
+from accounts.models import Author, Reviewer
 
 class Publication(models.Model):
     title = models.CharField(max_length=255)
     abstract = models.TextField()
     file = models.FileField(upload_to="articles/")
-    author = models.ForeignKey("Author", on_delete=models.CASCADE)
+    author = models.ForeignKey(Author, on_delete=models.CASCADE)
     submitted_at = models.DateTimeField(auto_now_add=True)
 
     STATUS_CHOICES = [
@@ -25,7 +26,7 @@ class Publication(models.Model):
 
 class PublicationReviewer(models.Model):
     publication = models.ForeignKey(Publication, on_delete=models.CASCADE, related_name="reviewers")
-    reviewer = models.ForeignKey("Reviewer", on_delete=models.CASCADE)
+    reviewer = models.ForeignKey(Reviewer, on_delete=models.CASCADE)
 
     def __str__(self):
         return f"{self.reviewer.user.username} reviewing {self.publication.title}"
@@ -33,7 +34,7 @@ class PublicationReviewer(models.Model):
 
 class Revision(models.Model):
     publication = models.ForeignKey(Publication, on_delete=models.CASCADE, related_name="revisions")
-    reviewer = models.ForeignKey("Reviewer", on_delete=models.CASCADE)
+    reviewer = models.ForeignKey(Reviewer, on_delete=models.CASCADE)
     comments = models.TextField()
     deadline = models.DateField()
     submitted_at = models.DateTimeField(auto_now_add=True)
