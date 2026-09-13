@@ -1,0 +1,17 @@
+[project]
+name = "publishing-system"
+version = "0.1.0"
+description = "Academic publishing and peer review system"
+requires-python = ">=3.10"
+
+dependencies = [
+    "django==5.2.17",
+    "psycopg[binary,pool]==3.3.5",
+    "djangorestframework==3.18.1",
+    "python-decouple==3.8",
+    "django-csp==4.0",
+    "Pillow==12.3.0",
+]
+
+[project.optional-dependencies]
+dev = ["ruff", "pytest", "pre-commit"]
