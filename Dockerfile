@@ -14,6 +14,6 @@ RUN pip install --no-cache-dir .
 
 COPY . .
 
-WORKDIR /app/publication_system
+WORKDIR /app/publishing_system
 
-ENTRYPOINT ["sh", "/app/publication_system/entrypoint.sh"]
+ENTRYPOINT ["sh", "/app/publishing_system/entrypoint.sh"]
