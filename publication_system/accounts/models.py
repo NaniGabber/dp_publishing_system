@@ -49,3 +49,16 @@ class Editor(models.Model):
 
     def __str__(self):
         return f"Editor: {self.user.username}"
+
+class UserChangeLog(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    action = models.CharField(max_length=255)   # опис події: "submitted article", "reviewed article", "updated profile"
+    publication = models.ForeignKey(
+        "publications.Publication", 
+        on_delete=models.SET_NULL, 
+        null=True, blank=True
+    )
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.user.username} - {self.action} ({self.timestamp})"
